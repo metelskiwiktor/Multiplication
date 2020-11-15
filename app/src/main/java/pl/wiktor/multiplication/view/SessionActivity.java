@@ -166,7 +166,7 @@ public class SessionActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             synchronized public void run() {
-                while (leftSeconds > 0) {
+                while (leftSeconds > 0 && !alreadyAnswered) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
