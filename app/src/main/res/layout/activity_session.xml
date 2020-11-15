@@ -31,8 +31,8 @@
 
     <TextView
         android:id="@+id/secondNumber"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
@@ -56,7 +56,6 @@
         android:ems="10"
         android:imeOptions="actionDone"
         android:inputType="numberDecimal"
-        android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintStart_toEndOf="@+id/symbolEquals" />
 

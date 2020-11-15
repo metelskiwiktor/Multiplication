@@ -70,11 +70,19 @@ public class SessionActivity extends AppCompatActivity {
     //THE SYNCHRONIZED MIGHT BE NOT REQUIRED, BUT FOR SAFE-THREAD I PREFER TO USE THIS TO AVOID
     //SET alreadyAnswered VARIABLE SAVE STATE INCORRECTLY
     //IT CHECKS IF THE ANSWER IS GOOD OR NOT AND SAVE THE ANSWER TO SERVICE
+    //IF SOMEONE PUT THE NULL VALUE I CHANGE THE ANSWER TO 0
     synchronized private void checkAnswerCondition() {
         if(alreadyAnswered) return;
 
         String input = numberInput.getText().toString();
-        int inputNumber = Integer.parseInt(input);
+        int inputNumber;
+
+        try{
+            inputNumber = Integer.parseInt(input);
+        } catch (Exception e){
+            e.printStackTrace();
+            inputNumber = 0;
+        }
 
         currentQuestion.setAnswer(inputNumber);
         sessionService.saveAnswer(currentQuestion);
@@ -143,7 +151,7 @@ public class SessionActivity extends AppCompatActivity {
         currentQuestion = sessionService.getNextQuestion();
         firstNumberTextView.setText(String.valueOf(currentQuestion.getFirstNumber()));
         secondNumberTextView.setText(String.valueOf(currentQuestion.getSecondNumber()));
-        numberInput.setText("0");
+        numberInput.setText("");
         leftSeconds = progressBar.getMax();
         progressBar.setProgress(leftSeconds);
         leftSecondsTextView.setText(String.format("%ds.", leftSeconds));
