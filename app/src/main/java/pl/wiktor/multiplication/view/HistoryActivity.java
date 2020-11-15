@@ -39,7 +39,7 @@ public class HistoryActivity extends AppCompatActivity {
         @SuppressLint("DefaultLocale") List<String> history = sessionService.getAllSessions().stream()
                 .map(session -> {
                     StringBuilder section = new StringBuilder(String.format("%s\nPoprawnie udzielone odpowiedzi: %d/%d\n",
-                            session.getCreatedAt().format(DateTimeFormatter.ofPattern("dd.mm.yyyy hh:mm:ss")),
+                            session.getCreatedAt().format(DateTimeFormatter.ofPattern("dd.mm.yyyy HH:mm:ss")),
                             session.getCorrectAnswered(), session.getAllQuestions()));
                     for(Question question: session.getQuestions()){
                         section.append(String.format("%d*%d=%d, odpowiedziano: %d, %s\n",
