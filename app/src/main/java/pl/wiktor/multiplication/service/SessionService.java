@@ -19,8 +19,8 @@ public class SessionService {
             sessionRepository.save(currentSession);
         }
 
-        int randomFirstNumber = new Random().nextInt(9) + 1;
-        int randomSecondNumber = new Random().nextInt(9) + 1;
+        int randomFirstNumber = new Random().nextInt(10) + 1;
+        int randomSecondNumber = new Random().nextInt(10) + 1;
 
         return new Question(randomFirstNumber, randomSecondNumber);
     }
